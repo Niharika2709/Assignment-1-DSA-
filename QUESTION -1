@@ -1,0 +1,131 @@
+QUESTION 1
+Develop a Menu driven program to demonstrate the following operations of Arrays 
+——MENU——- 
+1.CREATE 
+2. DISPLAY 
+3. INSERT 
+4. DELETE 
+5. LINEAR SEARCH 
+6. EXIT
+
+#include <stdio.h>
+
+int main() {
+    int array[500];   
+    int n = 0;     
+    int choice;
+
+    do {
+        printf("\n----- MENU -----\n");
+        printf("1. Create Array\n");
+        printf("2. Display Array\n");
+        printf("3. Insert Element\n");
+        printf("4. Delete Element\n");
+        printf("5. Linear Search\n");
+        printf("6. Exit\n");
+        printf("Enter your choice (1–6): ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: {
+                printf("Enter the size of the array: ");
+                scanf("%d", &n);
+                printf("Enter %d elements:\n", n);
+                for (int i = 0; i < n; i++) {
+                    scanf("%d", &array[i]);
+                }
+                break;
+            }
+
+            case 2: {
+            if (n == 0) {
+                    printf("Array is empty.\n");
+                } else {
+                    printf("The elements of the array are:\n");
+                    for (int i = 0; i < n; i++) {
+                        printf("%d ", array[i]);
+                    }
+                    printf("\n");
+                }
+                break;
+            }
+
+            case 3: {
+                int a , b;
+                printf("Enter the element to insert: ");
+                scanf("%d", &a);
+                printf("Enter the index to insert at (0 to %d): ", n);
+                scanf("%d", &b);
+
+                if (b < 0 || b > n) {
+                    printf("Insertion not possible.\n");
+                } 
+                else {
+                    for (int i = n; i > b; i--) {
+                        array[i] = array[i - 1];
+                    }
+                    array[b] = a;
+                    n++;
+                    printf("Element inserted successfully.\n");
+                }
+                break;
+            }
+
+            case 4: {
+                int c, found = 0;
+                printf("Enter the element to delete: ");
+                scanf("%d", &c);
+
+                for (int i = 0; i < n; i++) {
+                    if (array[i] == c) {
+                        for (int j = i; j < n - 1; j++) {
+                            array[j] = array[j + 1];
+                        }
+                        n--;
+                        found = 1;
+                        printf("Element deleted successfully.\n");
+                        break;
+                    }
+                }
+                if (!found) {
+                    printf("Element not found in array.\n");
+                }
+                break;
+            }
+
+            case 5: {
+                int d, found = 0;
+                printf("Enter the element to search: ");
+                scanf("%d", &d);
+
+                for (int i = 0; i < n; i++) {
+                    if (array[i] == d) {
+                        printf("Element found at index %d.\n", i);
+                        found = 1;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    printf("Element not found.\n");
+                }
+                break;
+            }
+
+            case 6: {
+                printf("Exiting the program.\n");
+                break;
+            }
+
+        }
+
+    } 
+        while (choice != 6);
+
+    return 0;
+}
+
+gcc array_menu.c -o array_menu
+./array_menu
+
+screenshots/output.png
