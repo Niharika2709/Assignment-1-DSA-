@@ -125,7 +125,3 @@ int main() {
     return 0;
 }
 
-gcc array_menu.c -o array_menu
-./array_menu
-
-screenshots/output.png
