@@ -1,0 +1,43 @@
+5) Write a program to find sum of every row and every column in a two-dimensional 
+array.
+
+
+
+#include <stdio.h>
+
+int main() {
+    int r, c;
+
+  printf("Enter number of rows and columns: ");
+  scanf("%d %d", &r, &c);
+  int arr[r][c];
+    
+  printf("Enter elements of the matrix:\n");
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    
+  printf("Sum of each row:\n");
+    for (int i = 0; i < r; i++) {
+        int sum = 0;
+        for (int j = 0; j < c; j++) {
+            sum += arr[i][j];
+        }
+        printf("Row: %d\n",  sum);
+    }
+
+    
+  printf("Sum of each column:\n");
+    for (int j = 0; j < c; j++) {
+        int sum = 0;
+        for (int i = 0; i < r; i++) {
+            sum += arr[i][j];
+        }
+        printf("Column : %d\n", sum);
+    }
+
+    return 0;
+}
